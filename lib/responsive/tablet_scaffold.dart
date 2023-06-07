@@ -1,4 +1,6 @@
 import 'package:dashboard/constants.dart';
+import 'package:dashboard/util/my_box.dart';
+import 'package:dashboard/util/my_tile.dart';
 import 'package:flutter/material.dart';
 
 class TabletScaffold extends StatefulWidget {
@@ -15,6 +17,36 @@ class _TabletScaffoldState extends State<TabletScaffold> {
       appBar: myAppBar,
       backgroundColor: myDefaultBackground,
       drawer: myDrawer,
+      body: Column(
+        children: [
+          // 4 boxes on the top
+          AspectRatio(
+            aspectRatio: 4 / 1,
+            child: SizedBox(
+              width: double.infinity,
+              child: GridView.builder(
+                itemCount: 4,
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 4,
+                ),
+                itemBuilder: (context, index) {
+                  return const MyBox();
+                },
+              ),
+            ),
+          ),
+
+          // Tiles below it
+          Expanded(
+            child: ListView.builder(
+              itemCount: 5,
+              itemBuilder: (context, index) {
+                return const MyTile();
+              },
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
