@@ -1,3 +1,4 @@
+import 'package:dashboard/constants.dart';
 import 'package:flutter/material.dart';
 
 class DesktopScaffold extends StatefulWidget {
@@ -10,8 +11,14 @@ class DesktopScaffold extends StatefulWidget {
 class _DesktopScaffoldState extends State<DesktopScaffold> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      backgroundColor: Colors.pink,
+    return Scaffold(
+      appBar: myAppBar,
+      backgroundColor: myDefaultBackground,
+      body: Row(
+        children: [
+          myDrawer,
+        ],
+      ),
     );
   }
 }
